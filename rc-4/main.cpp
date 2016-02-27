@@ -35,9 +35,9 @@ int main(int argc, const char * argv[]) {
     rc4_encrypt(text, key, c_text);
     
     cout << "Text len after rc4 encryption: " << strlen((char *) text) << endl;
-    cout << text <<endl;
+    cout << c_text <<endl;
     
-    rc4_encrypt(text, key, text);
+    rc4_encrypt(c_text, key, text);
     
     cout << strlen((char *) text) << endl;
     cout << text <<endl;
@@ -57,8 +57,8 @@ void rc4_encrypt(unsigned char *text, unsigned char *key, unsigned char *target_
     {
         //cout << "Text len during enctypting iteration " << c << " is: " << strlen((char *) text) << endl;
         unsigned char k = next_byte(S, i, j);
-        //target_text[c] = text[c] ^ k;
-        text[c] ^= k;
+        target_text[c] = text[c] ^ k;
+        //text[c] ^= k;
     }
 }
 
